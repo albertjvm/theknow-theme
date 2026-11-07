@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.5.0'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.6.0'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -51,7 +51,8 @@ design. Tokens are opt-in: app styles must reference them to take effect.
 
 ## UI primitives
 
-`components.css` supplies opt-in `.card`, `.page-title`, `.nav-tabs`,
+`components.css` supplies opt-in `.card`, `.page-title`, `.tk-header`,
+`.tk-header-top`, `.tk-header-links`, `.nav-tabs`,
 `.nav-elections`, `.brand`, `.brand-name`, `.brand-region`, `.overview-intro`, `.overview-eyebrow`, `.overview-actions`,
 `.overview-action`, `.tk-heading`, and `.tk-link` styles. Import tokens first,
 then components, then local styles. Apply `.tk-typography` to an ancestor to
@@ -60,6 +61,10 @@ Existing navigation controls must still
 provide their own links, event handling and current-page state (`.active` or
 `aria-current="page"` for elections). A navigation link is not an ARIA tab.
 Local styles can override layout or supply jurisdiction-specific variants.
+Use `.tk-header` on the header container and `.tk-header-top` for its first
+row. Use `.nav-tabs` for scrollable tab-style navigation or `.tk-header-links`
+for wrapping links. The theme sets spacing, not positioning: apps control
+sticky behaviour and the horizontal page gutters.
 
 React consumers can import `Brand`, `Card`, `PageTitle`, `ElectionsLabel`, and
 `OverviewIntro` from `@theknow/theme/react`;
