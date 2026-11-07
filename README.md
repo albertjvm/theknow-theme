@@ -1,6 +1,6 @@
 # TheKnow theme
 
-Shared, opt-in design tokens for TheKnow's monochrome interface. Colour is
+Shared, opt-in design tokens and UI primitives for TheKnow's monochrome interface. Colour is
 reserved for primary actions and meaningful data, such as party affiliations,
 vote outcomes, and charts.
 
@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.2.0'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.3.0'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -24,6 +24,7 @@ Import the tokens before the app stylesheet:
 
 ```ts
 import "@theknow/theme/tokens.css";
+import "@theknow/theme/components.css";
 import "./styles.css";
 ```
 
@@ -47,6 +48,23 @@ h1, h2, h3 {
 The theme uses system fonts matching the landing page. The legacy `fonts.css`
 export remains available for existing consumers, but is not needed for this
 design. Tokens are opt-in: app styles must reference them to take effect.
+
+## UI primitives
+
+`components.css` supplies opt-in `.card`, `.page-title`, `.nav-tabs`,
+`.nav-elections`, `.tk-heading`, and `.tk-link` styles. Import tokens first,
+then components, then local styles. Apply `.tk-typography` to an ancestor to
+style its h1–h3 headings, or use `.tk-heading` on individual elements.
+Existing navigation controls must still
+provide their own links, event handling and current-page state (`.active` or
+`aria-current="page"` for elections). A navigation link is not an ARIA tab.
+Local styles can override layout or supply jurisdiction-specific variants.
+
+React consumers can import `Card` and `PageTitle` from `@theknow/theme/react`;
+they require React 18 or newer. The React peer is optional for CSS-only users.
+The `Card` uses a section, an h2 and an optional `.note`, and expects the app
+to style `.note` and heading typography. Keep navigation/router-specific and
+data-dependent components in the app.
 
 ## Updating
 

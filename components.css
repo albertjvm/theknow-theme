@@ -1,0 +1,12 @@
+.card { min-width: 0; margin-top: 18px; padding: 20px; border: 1px solid var(--tk-color-border); border-radius: var(--tk-radius-card); background: var(--tk-color-surface); box-shadow: var(--tk-shadow-card); }
+.page-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.nav-tabs { display: flex; gap: 4px 20px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+.nav-tabs :is(a, button) { padding: 4px 0 8px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.nav-tabs :is(a, button):is(.active, [aria-current="page"]) { border-bottom-color: var(--tk-color-text-strong); }
+.tk-heading, :where(.tk-typography) :is(h1, h2, h3) { font-family: var(--tk-font-heading); color: var(--tk-color-heading); line-height: var(--tk-line-height-heading); }
+.tk-link { color: var(--tk-color-link); text-decoration: underline; text-decoration-color: #a3a3a3; text-underline-offset: 2px; }
+.tk-link:hover { text-decoration-color: currentColor; }
+.tk-link:focus-visible, .nav-elections:focus-visible, .nav-tabs :focus-visible { outline: 2px solid var(--tk-color-focus); outline-offset: 2px; }
+.nav-elections, nav .nav-elections, .nav-section-link.nav-elections { margin-left: auto; padding: 4px 12px; border: 0; border-radius: var(--tk-radius-pill); background: #e5e5e5; color: var(--tk-color-text); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.nav-elections:hover, nav .nav-elections:hover, .nav-section-link.nav-elections:hover { background: #d9d9d9; }
+.nav-elections.active, .nav-elections[aria-current="page"], nav .nav-elections.active, nav .nav-elections[aria-current="page"], .nav-section-link.nav-elections.active { background: var(--tk-color-text-strong); color: var(--tk-color-surface); }
