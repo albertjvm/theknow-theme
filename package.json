@@ -1,0 +1,18 @@
+{
+  "name": "@theknow/theme",
+  "version": "0.1.0",
+  "description": "Shared design tokens and fonts for TheKnow",
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./fonts.css": "./fonts.css"
+  },
+  "files": [
+    "tokens.css",
+    "fonts.css"
+  ],
+  "dependencies": {
+    "@fontsource-variable/source-sans-3": "^5.3.1",
+    "@fontsource-variable/source-serif-4": "^5.3.1"
+  }
+}
