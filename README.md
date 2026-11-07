@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.3.0'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.4.0'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -52,7 +52,8 @@ design. Tokens are opt-in: app styles must reference them to take effect.
 ## UI primitives
 
 `components.css` supplies opt-in `.card`, `.page-title`, `.nav-tabs`,
-`.nav-elections`, `.tk-heading`, and `.tk-link` styles. Import tokens first,
+`.nav-elections`, `.overview-intro`, `.overview-eyebrow`, `.overview-actions`,
+`.overview-action`, `.tk-heading`, and `.tk-link` styles. Import tokens first,
 then components, then local styles. Apply `.tk-typography` to an ancestor to
 style its h1–h3 headings, or use `.tk-heading` on individual elements.
 Existing navigation controls must still
@@ -60,11 +61,18 @@ provide their own links, event handling and current-page state (`.active` or
 `aria-current="page"` for elections). A navigation link is not an ARIA tab.
 Local styles can override layout or supply jurisdiction-specific variants.
 
-React consumers can import `Card` and `PageTitle` from `@theknow/theme/react`;
+React consumers can import `Card`, `PageTitle`, `ElectionsLabel`, and
+`OverviewIntro` from `@theknow/theme/react`;
 they require React 18 or newer. The React peer is optional for CSS-only users.
 The `Card` uses a section, an h2 and an optional `.note`, and expects the app
 to style `.note` and heading typography. Keep navigation/router-specific and
 data-dependent components in the app.
+
+Use `ElectionsLabel` inside the app's election link or button; the shared icon
+is decorative and the text provides its accessible name. `OverviewIntro`
+renders the overview's eyebrow, h1, description and optional action group.
+Pass jurisdiction-specific links or buttons as children with
+`overview-action` and optionally `primary` classes; preserve router behaviour.
 
 ## Updating
 

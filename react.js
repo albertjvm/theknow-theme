@@ -14,3 +14,16 @@ export function PageTitle({ title, children }) {
     children,
   );
 }
+
+export function ElectionsLabel() {
+  return createElement("span", null, createElement("span", { "aria-hidden": true }, "🗳️"), " Elections");
+}
+
+export function OverviewIntro({ eyebrow, title, description, titleId, children }) {
+  return createElement("section", { className: "overview-intro", "aria-labelledby": titleId },
+    createElement("p", { className: "overview-eyebrow" }, eyebrow),
+    createElement("h1", { id: titleId }, title),
+    createElement("p", null, description),
+    children && createElement("div", { className: "overview-actions" }, children),
+  );
+}

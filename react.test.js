@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Card, PageTitle } from "./react.js";
+import { Card, ElectionsLabel, OverviewIntro, PageTitle } from "./react.js";
 
 test("Card renders a section with a heading, optional note and content", () => {
   assert.equal(renderToStaticMarkup(createElement(Card, { title: "Votes", note: "Recent" }, "Content")),
@@ -14,4 +14,16 @@ test("Card renders a section with a heading, optional note and content", () => {
 test("PageTitle renders a heading and optional actions", () => {
   assert.equal(renderToStaticMarkup(createElement(PageTitle, { title: "Members" }, createElement("a", { href: "/members" }, "All"))),
     '<div class="page-title"><h1>Members</h1><a href="/members">All</a></div>');
+});
+
+test("elections label shares an accessible text name and decorative icon", () => {
+  assert.equal(renderToStaticMarkup(createElement(ElectionsLabel)),
+    '<span><span aria-hidden="true">🗳️</span> Elections</span>');
+});
+
+test("overview intro renders the shared title card and actions", () => {
+  assert.equal(renderToStaticMarkup(createElement(OverviewIntro, {
+    eyebrow: "Council", title: "Overview", titleId: "intro", description: "Explore",
+  }, createElement("a", { className: "overview-action", href: "/votes" }, "Votes"))),
+  '<section class="overview-intro" aria-labelledby="intro"><p class="overview-eyebrow">Council</p><h1 id="intro">Overview</h1><p>Explore</p><div class="overview-actions"><a class="overview-action" href="/votes">Votes</a></div></section>');
 });

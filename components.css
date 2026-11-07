@@ -10,3 +10,17 @@
 .nav-elections, nav .nav-elections, .nav-section-link.nav-elections { margin-left: auto; padding: 4px 12px; border: 0; border-radius: var(--tk-radius-pill); background: #e5e5e5; color: var(--tk-color-text); font-weight: 600; text-decoration: none; white-space: nowrap; }
 .nav-elections:hover, nav .nav-elections:hover, .nav-section-link.nav-elections:hover { background: #d9d9d9; }
 .nav-elections.active, .nav-elections[aria-current="page"], nav .nav-elections.active, nav .nav-elections[aria-current="page"], .nav-section-link.nav-elections.active { background: var(--tk-color-text-strong); color: var(--tk-color-surface); }
+.overview-intro { margin-top: 20px; padding: 24px 28px; background: var(--tk-color-surface); border: 1px solid var(--tk-color-border); border-radius: var(--tk-radius-card); }
+.overview-intro h1 { font-size: clamp(1.7rem, 3vw, 2.2rem); }
+.overview-intro > p:not(.overview-eyebrow) { margin: 8px 0 16px; color: var(--tk-color-text-muted); line-height: 1.5; }
+.overview-eyebrow { margin: 0 0 6px; color: var(--tk-color-text-muted); font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.overview-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.overview-action { display: inline-flex; align-items: center; min-height: 38px; box-sizing: border-box; padding: 8px 14px; border: 1px solid var(--tk-color-border-control); border-radius: var(--tk-radius-control); background: var(--tk-color-surface); color: var(--tk-color-link); font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+.overview-action:hover { background: var(--tk-color-surface-muted); }
+.overview-action.primary { border-color: var(--tk-color-accent); background: var(--tk-color-accent); color: var(--tk-color-on-accent); }
+.overview-action.primary:hover { background: var(--tk-color-accent-hover); }
+.overview-action:focus-visible { outline: 2px solid var(--tk-color-focus); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .overview-intro { margin-top: 14px; padding: 16px; }
+  .overview-intro h1 { font-size: 1.6rem; }
+}
