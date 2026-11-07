@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.6.0'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.6.1'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -26,6 +26,13 @@ Import the tokens before the app stylesheet:
 import "@theknow/theme/tokens.css";
 import "@theknow/theme/components.css";
 import "./styles.css";
+```
+
+For a Vite app, reference the shared favicon in `index.html` so Vite emits it
+with the production assets:
+
+```html
+<link rel="icon" type="image/svg+xml" href="/node_modules/@theknow/theme/favicon.svg" />
 ```
 
 Use the tokens in the app's stylesheet:

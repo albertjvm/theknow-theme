@@ -1,12 +1,13 @@
 {
   "name": "@theknow/theme",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Shared design tokens and UI primitives for TheKnow",
   "type": "module",
   "exports": {
     "./tokens.css": "./tokens.css",
     "./fonts.css": "./fonts.css",
     "./components.css": "./components.css",
+    "./favicon.svg": "./favicon.svg",
     "./react": {
       "types": "./react.d.ts",
       "default": "./react.js"
@@ -16,6 +17,7 @@
     "tokens.css",
     "fonts.css",
     "components.css",
+    "favicon.svg",
     "react.js",
     "react.d.ts"
   ],
