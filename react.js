@@ -19,6 +19,13 @@ export function ElectionsLabel() {
   return createElement("span", null, createElement("span", { "aria-hidden": true }, "🗳️"), " Elections");
 }
 
+export function Brand({ children }) {
+  return createElement("div", { className: "brand" },
+    createElement("a", { className: "brand-name", href: "https://theknow.ca/", "aria-label": "TheKnow home" }, "TheKnow"),
+    children,
+  );
+}
+
 export function OverviewIntro({ eyebrow, title, description, titleId, children }) {
   return createElement("section", { className: "overview-intro", "aria-labelledby": titleId },
     createElement("p", { className: "overview-eyebrow" }, eyebrow),

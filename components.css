@@ -3,6 +3,11 @@
 .nav-tabs { display: flex; gap: 4px 20px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
 .nav-tabs :is(a, button) { padding: 4px 0 8px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .nav-tabs :is(a, button):is(.active, [aria-current="page"]) { border-bottom-color: var(--tk-color-text-strong); }
+.brand { display: inline-flex; align-items: baseline; gap: 9px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.brand .brand-name { color: var(--tk-color-text-strong); text-decoration: none; }
+.brand .brand-region { border: 0; border-left: 1px solid var(--tk-color-border-control); padding: 0 0 0 9px; background: transparent; color: var(--tk-color-text-muted); font: inherit; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; cursor: pointer; }
+.brand :is(.brand-name, .brand-region):hover { text-decoration: underline; }
+.brand :is(.brand-name, .brand-region):focus-visible { outline: 2px solid var(--tk-color-focus); outline-offset: 2px; }
 .tk-heading, :where(.tk-typography) :is(h1, h2, h3) { font-family: var(--tk-font-heading); color: var(--tk-color-heading); line-height: var(--tk-line-height-heading); }
 .tk-link { color: var(--tk-color-link); text-decoration: underline; text-decoration-color: #a3a3a3; text-underline-offset: 2px; }
 .tk-link:hover { text-decoration-color: currentColor; }

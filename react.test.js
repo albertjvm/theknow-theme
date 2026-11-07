@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Card, ElectionsLabel, OverviewIntro, PageTitle } from "./react.js";
+import { Brand, Card, ElectionsLabel, OverviewIntro, PageTitle } from "./react.js";
 
 test("Card renders a section with a heading, optional note and content", () => {
   assert.equal(renderToStaticMarkup(createElement(Card, { title: "Votes", note: "Recent" }, "Content")),
@@ -19,6 +19,12 @@ test("PageTitle renders a heading and optional actions", () => {
 test("elections label shares an accessible text name and decorative icon", () => {
   assert.equal(renderToStaticMarkup(createElement(ElectionsLabel)),
     '<span><span aria-hidden="true">🗳️</span> Elections</span>');
+});
+
+test("brand preserves separate home and jurisdiction navigation", () => {
+  assert.equal(renderToStaticMarkup(createElement(Brand, null, createElement("a", {
+    className: "brand-region", href: "#/overview", "aria-label": "Canada app home",
+  }, "Canada"))), '<div class="brand"><a class="brand-name" href="https://theknow.ca/" aria-label="TheKnow home">TheKnow</a><a class="brand-region" href="#/overview" aria-label="Canada app home">Canada</a></div>');
 });
 
 test("overview intro renders the shared title card and actions", () => {
