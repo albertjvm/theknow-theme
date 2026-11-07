@@ -1,29 +1,28 @@
 # TheKnow theme
 
-Shared design tokens and self-hosted fonts for TheKnow. This initial package
-reflects the existing Toronto and Ontario app styling; it does not apply any
-global styles or change an app's appearance by itself.
+Shared, opt-in design tokens for TheKnow's monochrome interface. Colour is
+reserved for primary actions and meaningful data, such as party affiliations,
+vote outcomes, and charts.
 
 ## Publish and install
 
-Create a GitHub repository for this directory, commit these files, and create
-a `v0.1.0` tag at that commit. In each app, install the tagged Git dependency
-(replace `OWNER` with the repository owner):
+Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'github:OWNER/theknow-theme#v0.1.0'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.2.0'
 ```
 
-Commit the app's updated `package.json` and lockfile. Netlify must be able to
+Commit the app's updated `package.json` and lockfile. Check the lockfile's
+`resolved` URL as npm may record an SSH URL even when HTTPS was requested;
+an SSH URL requires build-time Git credentials. Netlify must be able to
 access the repository; for a private repository, configure appropriate
 build-time Git access. Do not commit credentials.
 
 ## Use in a Vite app
 
-Import the fonts and tokens before the app stylesheet:
+Import the tokens before the app stylesheet:
 
 ```ts
-import "@theknow/theme/fonts.css";
 import "@theknow/theme/tokens.css";
 import "./styles.css";
 ```
@@ -45,12 +44,9 @@ h1, h2, h3 {
 }
 ```
 
-The font CSS imports the Fontsource packages declared as dependencies, so a
-bundler such as Vite resolves and serves the font files with the app. Existing
-direct Fontsource imports can be removed once the theme imports are in place.
-The tokens are opt-in: existing app styles must reference them to take effect.
-The static landing page needs a build or copy step that resolves these package
-imports before it can use the theme.
+The theme uses system fonts matching the landing page. The legacy `fonts.css`
+export remains available for existing consumers, but is not needed for this
+design. Tokens are opt-in: app styles must reference them to take effect.
 
 ## Updating
 

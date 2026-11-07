@@ -1,23 +1,23 @@
 :root {
-  --tk-font-body: "Source Sans 3 Variable", "Segoe UI", sans-serif;
-  --tk-font-heading: "Source Serif 4 Variable", Georgia, serif;
+  --tk-font-body: "Segoe UI", system-ui, sans-serif;
+  --tk-font-heading: Georgia, "Times New Roman", serif;
   --tk-line-height-body: 1.5;
   --tk-line-height-heading: 1.2;
 
-  --tk-color-background: #f5f6f8;
+  --tk-color-background: #f5f5f5;
   --tk-color-surface: #fff;
-  --tk-color-surface-muted: #f6f8fb;
-  --tk-color-text: #1f2937;
-  --tk-color-text-strong: #111827;
-  --tk-color-text-muted: #526174;
-  --tk-color-heading: #17243b;
-  --tk-color-link: #1d4ed8;
+  --tk-color-surface-muted: #fafafa;
+  --tk-color-text: #171717;
+  --tk-color-text-strong: #171717;
+  --tk-color-text-muted: #525252;
+  --tk-color-heading: #171717;
+  --tk-color-link: #171717;
   --tk-color-accent: #2563eb;
   --tk-color-accent-hover: #1d4ed8;
   --tk-color-on-accent: #fff;
-  --tk-color-border: #e1e7ef;
-  --tk-color-border-control: #d1d5db;
-  --tk-color-focus: #93c5fd;
+  --tk-color-border: #d9d9d9;
+  --tk-color-border-control: #d9d9d9;
+  --tk-color-focus: #171717;
 
   --tk-space-1: 4px;
   --tk-space-2: 8px;
@@ -29,6 +29,6 @@
   --tk-radius-control: 6px;
   --tk-radius-card: 12px;
   --tk-radius-pill: 999px;
-  --tk-shadow-card: 0 2px 6px rgb(23 36 59 / 0.04);
+  --tk-shadow-card: 0 2px 6px rgb(0 0 0 / 0.04);
   --tk-content-width: 960px;
 }

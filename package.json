@@ -1,6 +1,6 @@
 {
   "name": "@theknow/theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared design tokens and fonts for TheKnow",
   "type": "module",
   "exports": {
