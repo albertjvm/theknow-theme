@@ -1,4 +1,4 @@
-import { createElement, useState } from "react";
+import { createElement, Fragment, useState } from "react";
 
 export function Card({ title, note, children }) {
   return createElement("section", { className: "card" },
@@ -83,4 +83,26 @@ export function SortableTable({ rows, columns, rowKey, initialSort, initialDesce
     createElement("tbody", null, sorted.map((row) => createElement("tr", { key: rowKey(row) }, columns.map((item) =>
       createElement("td", { key: item.key }, item.render ? item.render(row) : item.value(row) ?? "—"))))),
   ));
+}
+
+export function AlignmentHeatmap({ alignment, names, label, minimumShared = 100 }) {
+  const { memberIds, agreement, sharedVotes } = alignment;
+  const keep = memberIds.map((_, i) => i).filter((i) => sharedVotes[i][i] >= minimumShared);
+  const average = (i) => {
+    const values = keep.filter((j) => j !== i).map((j) => agreement[i][j]).filter((value) => value !== null);
+    return values.reduce((a, b) => a + b, 0) / (values.length || 1);
+  };
+  const order = keep.sort((a, b) => average(b) - average(a));
+  const color = (value) => value === null ? "#eee" : `hsl(${Math.round(value * 120)} 65% ${55 - Math.abs(value - 0.5) * 20}%)`;
+  return createElement("div", { className: "heatmap-scroll" },
+    createElement("div", { className: "heatmap", style: { gridTemplateColumns: `90px repeat(${order.length}, 18px)` } },
+      createElement("div"),
+      order.map((j) => createElement("div", { key: j, className: "col-label" }, label(names[memberIds[j]] ?? memberIds[j]))),
+      order.map((i) => createElement(Fragment, { key: i },
+        createElement("div", { className: "row-label" }, label(names[memberIds[i]] ?? memberIds[i])),
+        order.map((j) => createElement("div", { key: j, className: "cell", style: { background: color(agreement[i][j]) },
+          title: `${names[memberIds[i]]} & ${names[memberIds[j]]}: ${agreement[i][j] === null ? "no shared votes" : `${(agreement[i][j] * 100).toFixed(0)}% agreement`} (${sharedVotes[i][j]} shared votes)` })),
+      )),
+    ),
+  );
 }

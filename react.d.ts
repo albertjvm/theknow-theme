@@ -10,3 +10,4 @@ export function MotionRow(props: { title: ReactNode; meta: ReactNode; children?:
 export function SortHeader(props: { label: string; active: boolean; descending: boolean; onClick: () => void }): ReactElement;
 export type TableColumn<T> = { key: string; label: string; value: (row: T) => string | number | null; render?: (row: T) => ReactNode };
 export function SortableTable<T>(props: { rows: T[]; columns: TableColumn<T>[]; rowKey: (row: T) => string; initialSort: string; initialDescending?: boolean }): ReactElement;
+export function AlignmentHeatmap(props: { alignment: { memberIds: string[]; agreement: (number | null)[][]; sharedVotes: number[][] }; names: Record<string, string>; label: (name: string) => string; minimumShared?: number }): ReactElement;

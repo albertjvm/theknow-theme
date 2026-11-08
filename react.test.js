@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Brand, Card, ElectionsLabel, MotionRow, OverviewIntro, PageTitle, SortableTable, TallyBar } from "./react.js";
+import { AlignmentHeatmap, Brand, Card, ElectionsLabel, MotionRow, OverviewIntro, PageTitle, SortableTable, TallyBar } from "./react.js";
 
 test("Card renders a section with a heading, optional note and content", () => {
   assert.equal(renderToStaticMarkup(createElement(Card, { title: "Votes", note: "Recent" }, "Content")),
@@ -55,4 +55,13 @@ test("sortable table places missing values last in descending order", () => {
   }));
   assert.match(html, /aria-sort="descending"/);
   assert.match(html, /<td>4<\/td>.*<td>1<\/td>.*<td>—<\/td>/);
+});
+
+test("alignment heatmap excludes members below the shared-vote threshold", () => {
+  const html = renderToStaticMarkup(createElement(AlignmentHeatmap, {
+    alignment: { memberIds: ["a", "b"], agreement: [[1, 0.5], [0.5, 1]], sharedVotes: [[10, 4], [4, 4]] },
+    names: { a: "Able", b: "Baker" }, label: (name) => name, minimumShared: 5,
+  }));
+  assert.match(html, /Able/);
+  assert.doesNotMatch(html, /Baker/);
 });
