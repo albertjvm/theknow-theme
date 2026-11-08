@@ -3,6 +3,7 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AlignmentHeatmap, Brand, Card, ElectionsLabel, MotionRow, OverviewIntro, PageTitle, SortableTable, TallyBar } from "./react.js";
+import { VotingBlocs } from "./blocs.js";
 
 test("Card renders a section with a heading, optional note and content", () => {
   assert.equal(renderToStaticMarkup(createElement(Card, { title: "Votes", note: "Recent" }, "Content")),
@@ -64,4 +65,14 @@ test("alignment heatmap excludes members below the shared-vote threshold", () =>
   }));
   assert.match(html, /Able/);
   assert.doesNotMatch(html, /Baker/);
+});
+
+test("voting blocs renders labelled accessible member dots", () => {
+  const html = renderToStaticMarkup(createElement(VotingBlocs, {
+    layout: [{ id: "a", x: 0, y: 1 }, { id: "b", x: 1, y: 0 }], names: { a: "Alex Able", b: "Bea Baker" },
+    agreements: { a: null, b: 0.8 }, mayorId: "a", onSelect: () => {},
+  }));
+  assert.match(html, /aria-label="Voting blocs"/);
+  assert.match(html, /aria-label="Alex Able"/);
+  assert.match(html, /role="link"/);
 });

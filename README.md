@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.7.1'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.7.2'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -72,6 +72,8 @@ Columns use explicit numeric or text sort values; missing values sort last.
 turnout chart, and `YearlyCouncilChart` renders Toronto's year-by-year chart.
 `AlignmentHeatmap` provides the voting-alignment matrix. Apps using the charts
 must install Recharts 3.
+`VotingBlocs` from `@theknow/theme/blocs` renders the Toronto bloc map from
+caller-supplied, validated two-dimensional coordinates and agreement values.
 
 `components.css` supplies opt-in `.card`, `.page-title`, `.tk-header`,
 `.tk-header-top`, `.tk-header-links`, `.nav-tabs`,

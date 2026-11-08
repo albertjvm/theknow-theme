@@ -1,6 +1,6 @@
 {
   "name": "@theknow/theme",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Shared design tokens and UI primitives for TheKnow",
   "type": "module",
   "exports": {
@@ -16,6 +16,10 @@
     "./charts": {
       "types": "./charts.d.ts",
       "default": "./charts.js"
+    },
+    "./blocs": {
+      "types": "./blocs.d.ts",
+      "default": "./blocs.js"
     }
   },
   "files": [
@@ -27,7 +31,9 @@
     "react.js",
     "react.d.ts",
     "charts.js",
-    "charts.d.ts"
+    "charts.d.ts",
+    "blocs.js",
+    "blocs.d.ts"
   ],
   "peerDependencies": {
     "react": ">=18",
