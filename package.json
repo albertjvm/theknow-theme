@@ -1,31 +1,41 @@
 {
   "name": "@theknow/theme",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Shared design tokens and UI primitives for TheKnow",
   "type": "module",
   "exports": {
     "./tokens.css": "./tokens.css",
     "./fonts.css": "./fonts.css",
     "./components.css": "./components.css",
+    "./civic.css": "./civic.css",
     "./favicon.svg": "./favicon.svg",
     "./react": {
       "types": "./react.d.ts",
       "default": "./react.js"
+    },
+    "./charts": {
+      "types": "./charts.d.ts",
+      "default": "./charts.js"
     }
   },
   "files": [
     "tokens.css",
     "fonts.css",
     "components.css",
+    "civic.css",
     "favicon.svg",
     "react.js",
-    "react.d.ts"
+    "react.d.ts",
+    "charts.js",
+    "charts.d.ts"
   ],
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "recharts": ">=3"
   },
   "peerDependenciesMeta": {
-    "react": { "optional": true }
+    "react": { "optional": true },
+    "recharts": { "optional": true }
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.1",

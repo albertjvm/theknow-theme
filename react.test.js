@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Brand, Card, ElectionsLabel, OverviewIntro, PageTitle } from "./react.js";
+import { Brand, Card, ElectionsLabel, MotionRow, OverviewIntro, PageTitle, SortableTable, TallyBar } from "./react.js";
 
 test("Card renders a section with a heading, optional note and content", () => {
   assert.equal(renderToStaticMarkup(createElement(Card, { title: "Votes", note: "Recent" }, "Content")),
@@ -32,4 +32,27 @@ test("overview intro renders the shared title card and actions", () => {
     eyebrow: "Council", title: "Overview", titleId: "intro", description: "Explore",
   }, createElement("a", { className: "overview-action", href: "/votes" }, "Votes"))),
   '<section class="overview-intro" aria-labelledby="intro"><p class="overview-eyebrow">Council</p><h1 id="intro">Overview</h1><p>Explore</p><div class="overview-actions"><a class="overview-action" href="/votes">Votes</a></div></section>');
+});
+
+test("motion rows render the shared result, tally and optional chips", () => {
+  const html = renderToStaticMarkup(createElement(MotionRow, {
+    title: createElement("a", { href: "/vote", className: "motion-title" }, "Motion"),
+    meta: "2025", yes: 3, no: 1, outcome: "Carried", outcomeClass: "carried",
+  }, createElement("div", { className: "motion-chips" }, "Tag")));
+  assert.match(html, /class="motion-main"/);
+  assert.match(html, /class="motion-chips"/);
+  assert.match(html, /width:75%/);
+  assert.match(html, /badge carried/);
+  assert.match(html, /3–1/);
+  assert.match(renderToStaticMarkup(createElement(TallyBar, { yes: 0, no: 0 })), /width:0%/);
+});
+
+test("sortable table places missing values last in descending order", () => {
+  const html = renderToStaticMarkup(createElement(SortableTable, {
+    rows: [{ id: "missing", n: null }, { id: "low", n: 1 }, { id: "high", n: 4 }],
+    columns: [{ key: "n", label: "Number", value: (row) => row.n }],
+    rowKey: (row) => row.id, initialSort: "n", initialDescending: true,
+  }));
+  assert.match(html, /aria-sort="descending"/);
+  assert.match(html, /<td>4<\/td>.*<td>1<\/td>.*<td>—<\/td>/);
 });

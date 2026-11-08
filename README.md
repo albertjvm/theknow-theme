@@ -9,7 +9,7 @@ vote outcomes, and charts.
 Install the tagged Git dependency in each app:
 
 ```sh
-npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.6.1'
+npm install 'git+https://github.com/albertjvm/theknow-theme.git#v0.7.0'
 ```
 
 Commit the app's updated `package.json` and lockfile. Check the lockfile's
@@ -58,6 +58,19 @@ design. Tokens are opt-in: app styles must reference them to take effect.
 
 ## UI primitives
 
+Municipal civic apps can import `@theknow/theme/civic.css` after `components.css`
+for the exact Toronto civic layouts, tables, motion rows, budget, election and
+overview styles. This opt-in stylesheet includes page-level defaults and
+responsive rules. Make shared presentation changes here rather than copying
+the styles into individual apps.
+
+`MotionRow` and `TallyBar` in `@theknow/theme/react` provide the shared vote
+row layout while accepting jurisdiction-specific links and labels.
+`SortableTable` and `SortHeader` supply Toronto's sortable table presentation.
+Columns use explicit numeric or text sort values; missing values sort last.
+`TurnoutChart` in `@theknow/theme/charts` is the shared Recharts election
+turnout chart; apps using it must install Recharts 3.
+
 `components.css` supplies opt-in `.card`, `.page-title`, `.tk-header`,
 `.tk-header-top`, `.tk-header-links`, `.nav-tabs`,
 `.nav-elections`, `.brand`, `.brand-name`, `.brand-region`, `.overview-intro`, `.overview-eyebrow`, `.overview-actions`,
@@ -94,4 +107,4 @@ separate link to TheKnow's main site; the app retains control of its own routing
 Make and test the theme change, update the package version, and create a new
 Git tag. Update each app's dependency to that tag and verify its build and
 appearance before deploying. Tags should remain immutable. Keep
-jurisdiction-specific styles and chart colours in the apps.
+jurisdiction-specific data and interpretation in the apps.
